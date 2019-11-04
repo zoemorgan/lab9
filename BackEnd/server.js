@@ -68,12 +68,21 @@ app.get('/api/movies', (req,res,next) => {
   })
 })
 
+app.delete('/api/movies/:id', (req, res) => {
+  console.log(req.params.id);
+  MovieModel.deleteOne({_id:req.params.id}, (error, data) =>{
+    if(error){
+      res.json(data);
+   }
+  })
+})
+
 app.get('/api/movies/:id', (req, res, next) => {
-console.log(req.params.id);
-MovieModel.findById(req.params.id,
-function (err, data) {
-res.json(data);
-});
+  console.log(req.params.id);
+  MovieModel.findById(req.params.id,
+  function (err, data) {
+  res.json(data);
+  });
 })
 
 app.post('/api/movies', (req,res) =>{
