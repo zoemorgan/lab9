@@ -23,4 +23,13 @@ export class MovieServiceService {
     return this.http.delete('http://localhost:4000/api/movies/'+id);
   }
 
+  getMovie(id: string): Observable<any> {
+    return this.http.get("http://localhost:4000/api/movies/" + id);
+  }
+
+  updateMovie(id: string, title: string, year: string, poster: string): Observable<any> {
+    const movie: Movie = { title: title, year: year, poster: poster };
+    return this.http.put("http://localhost:4000/api/movies/" + id, movie);
+  }
+
 }

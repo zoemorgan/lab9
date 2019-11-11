@@ -15,9 +15,14 @@ const routes: Routes = [
   {
     path: 'edit',
     component: EditComponent
-  }
-  
+  },
+
+  {
+    path:'edit/:id',
+    component: EditComponent
+    }
 ];
+  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

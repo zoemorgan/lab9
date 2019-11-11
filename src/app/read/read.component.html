@@ -18,7 +18,7 @@
     </mat-expansion-panel-header>
     <img src="{{movie.poster}}">
     <mat-action-row>
-    <button mat-button (click) ="onEdit()" color="primary">EDIT</button>
+    <button mat-button [routerLink]="['/edit', movie._id]" color="primary">EDIT</button>
     <button mat-button (click)= "onDelete(movie._id)" color="warn">DELETE</button>
     </mat-action-row>
     </mat-expansion-panel>

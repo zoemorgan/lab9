@@ -42,27 +42,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/movies', (req,res,next) => {
-//   const movies = [
-//     {
-//       "Title": "Avengers: Infinity War",
-//       "Year": "2018",
-//       "imdbID": "tt4154756",
-//       "Type": "movie",
-//       "Poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
-//     },
-//     {
-//       "Title": "Charlie Wilson's War",
-//       "Year": "2007",
-//       "imdbID": "tt0472062",
-//       "Type": "movie",
-//       "Poster": "https://m.media-amazon.com/images/M/MV5BMTgwMDgwMDc4MF5BMl5BanBnXkFtZTYwOTU3MDM4._V1_SX300.jpg"
-//     }];
-//   console.log("get request")
-//   res.json({
-//     message: 'Posts fetched succesfully!',
-//     movies: movies
-//   });
-
   MovieModel.find((err,data)=>{
     res.json({movies:data});
   })
@@ -83,6 +62,18 @@ app.get('/api/movies/:id', (req, res, next) => {
   function (err, data) {
   res.json(data);
   });
+})
+
+app.put('/api/movies/:id', function (req, res) {
+  console.log("Update Movie " + req.params.id);
+  console.log(req.body);
+  console.log(req.body.title);
+  console.log(req.body.year);
+  console.log(req.body.poster);
+  MovieModel.findByIdAndUpdate(req.params.id, req.body, {new: true},
+  function(err, data){
+    res.send(data);
+  })
 })
 
 app.post('/api/movies', (req,res) =>{
